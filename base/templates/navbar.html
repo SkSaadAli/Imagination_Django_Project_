@@ -1,0 +1,93 @@
+<!-- header start -->
+{% load static %}
+<header id="masthead" class="site-header" role="banner">
+
+<!-- this html is for navbar that remains same for every page except login/register -->
+
+    <!-- this is nav bar starting point -->
+
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container">
+            <div class="row">
+                <div class="site-navigation-inner col-sm-12">
+                    <div class="navbar-header">
+                        <button type="button" class="btn navbar-toggle" data-toggle="collapse"
+                            data-target=".navbar-ex1-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse navbar-ex1-collapse">
+                        <ul id="menu-all-pages" class="nav navbar-nav">
+
+                            {% if request.user.is_authenticated and page != 'create' %}
+                            <li id="menu-item-1696"
+                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1813"><a
+                                    title="Home" href="{% url 'create-poem' %}">
+                                    <button type="button" style="border-radius: 17px;">Create Poem</button></a>
+                            </li>
+                            {% endif %}
+
+                            <li id="menu-item-1696"
+                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1813"><a
+                                    title="Home" href="{% url 'home' %}">Home</a></li>
+
+
+
+                            <li id="menu-item-1696"
+                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1813"><a
+                                    title="About Us" href="{% url 'about' %}">About Us</a></li>
+
+
+
+                            {% if request.user.is_authenticated %}
+                            <li id="menu-item-1696"
+                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1813"><a
+                                    title="logout" href="{% url 'logout' %}">logout</a></li>
+
+                            {% else %}
+
+                            <li id="menu-item-1696"
+                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1813"><a
+                                    title="login" href="{% url 'login' %}">login</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+
+                    <div class="nav-search">
+
+                        <form action="{% url 'search' %}" method="get"><input type="text" name="q" value=""
+                                placeholder="Search"><button type="submit" class="header-search-icon" name="submit"
+                                id="searchsubmit" value="Search"><i class="fa fa-search"></i></button>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- this is where navbar ends -->
+
+    <!-- this is logo  -->
+    <div class="container">
+        <div id="logo">
+            <h1 class="site-name">
+                <a href="{% url 'home' %}" class="custom-logo-link" rel="home" aria-current="page"><img width="207"
+                        height="40" src="{% static 'assets/logo.png' %}" class="custom-logo" alt="Activello Theme Demo"
+                        decoding="async" /></a>
+            </h1>
+            <div class="tagline">Read or Create to your hearts content</div>
+
+        </div>
+        <div id="line"></div>
+    </div>
+
+    <!-- end of logo -->
+
+</header>
+
+<!-- end of header -->

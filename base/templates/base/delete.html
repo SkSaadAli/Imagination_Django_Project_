@@ -1,0 +1,52 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<!-- html for delelting either poems or comments  -->
+
+<body
+    class="post-template-default single single-post postid-1016 single-format-standard wp-custom-logo has-sidebar-right elementor-default elementor-kit-2114">
+    {% include 'navbar.html' %}
+    <div id="content" class="site-content">
+        <div class="container main-content-area">
+
+
+
+            <div class="row">
+
+
+                <div class="main-content-inner col-sm-12 col-md-8 no-sidebar">
+
+                    <div id="primary" class="content-area">
+                        <main id="main" class="site-main" role="main">
+                            <article id="post-1016"
+                                class="post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+                                <div class="blog-item-wrap">
+                                    <div class="post-inner-content">
+                                        <header class="entry-header page-header">
+                                            <div class="entry-meta"></div>
+                                        </header>
+                                        <div class="entry-content">
+                                            <center>
+                                                <form method="POST" action="">
+                                                    {% csrf_token %}
+                                                    <p>Are you sure you want to delete "{{obj.body}}"?</p>
+                                                    <!-- put if else statement -->
+                                                    <a href="{{request.META.HTTP_REFERER}}">Go Back</a>
+                                                    <input type="submit" value="Confirm" />
+                                                </form>
+                                            </center>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </main>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- </div> -->
+
+
+    {% endblock %}

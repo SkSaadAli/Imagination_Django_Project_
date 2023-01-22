@@ -1,0 +1,108 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<!-- this html is for extension of searching of all types like author etc -->
+
+<body class="search search-results wp-custom-logo has-sidebar-right elementor-default elementor-kit-2114">
+
+	{% include 'navbar.html' %}
+
+	<div id="content" class="site-content">
+
+		<div class="container main-content-area">
+			<div class="row">
+
+				<!-- this is main content -->
+
+				<div class="main-content-inner col-sm-12 col-md-8 side-right">
+					<section id="primary" class="content-area">
+						<main id="main" class="site-main" role="main">
+							{% block content2 %}
+
+							{% endblock content2 %}
+
+							{% for Poem in page_obj %}
+							<article id="post-555"
+								class="post-555 post type-post status-publish format-gallery has-post-thumbnail hentry category-post-formats tag-gallery tag-post-formats tag-shortcode post_format-post-format-gallery">
+								<div class="blog-item-wrap">
+									<div class="post-inner-content">
+										<header class="entry-header page-header">
+											<ul class="single-category">
+												<li class="cat-item cat-item-38"><a
+														href="{% url 'category' %}?q={{Poem.category}}">{{Poem.category}}</a>
+												</li>
+											</ul>
+											<h2 class="entry-title"><a href="{% url 'poem' Poem.id %}"
+													rel="bookmark">{{Poem.name}}</a></h2>
+											<div class="entry-meta">
+												<span class="posted-on">Posted on <time class="entry-date published"
+														datetime="2015-11-12T07:24:14+00:00">{{Poem.created}}</time><time
+														class="updated"
+														datetime="2020-10-21T11:09:28+00:00">{{Poem.updated}}</time></span>by
+												<span class="author vcard"><a class="url fn n"
+														href="{% url 'author' %}?q={{Poem.Author}}">{{Poem.Author}}</a></span>
+											</div>
+										</header>
+
+										<p>
+											<center>{{Poem|linebreaksbr}} [...]<br><br>
+
+												<div style="    border-left: 2px solid #696969;
+												border-right: 2px solid #696969;
+												color: #696969;
+												font-family: 'Maven Pro', sans-serif;
+												font-weight: 700;
+												line-height: 1.2;
+												letter-spacing: 1px;
+												display: inline-block;
+												padding: 0 10px;
+												text-transform: uppercase;">
+													<a href="{% url 'poem' Poem.id %}" title="Poem">Read More</a>
+												</div>
+
+											</center>
+
+										</p>
+
+									</div>
+								</div>
+							</article>
+
+							<div id="line"></div>
+							{% endfor %}
+						</main>
+					</section>
+					<nav class="navigation paging-navigation" role="navigation">
+						<h1 class="screen-reader-text">Posts navigation</h1>
+						<div class="nav-links">
+
+							{%if page_obj.has_next %}
+							<div class="nav-previous">
+								<a href="?q={{q}}&page={{page_obj.next_page_number}}">Older posts</a>
+							</div>
+							{% endif %}
+
+							{%if page_obj.has_previous %}
+
+
+							<div class="nav-next"><a href="?q={{q}}&page={{page_obj.previous_page_number}}">Newer
+									posts</a> </div>
+							{% endif %}
+						</div>
+
+					</nav>
+				</div>
+
+				<!-- end of main content -->
+
+				<!-- this is side bar -->
+				{% include 'side.html' %}
+
+				<!-- here is the end of side bar -->
+			</div>
+		</div>
+	</div>
+	</div>
+
+	{% endblock %}

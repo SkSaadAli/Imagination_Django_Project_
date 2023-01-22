@@ -1,0 +1,15 @@
+{% extends 'search.html' %}
+
+{% block content2 %}
+
+<!-- html for only Category hyperlinks  -->
+<header class="page-header">
+    <h1 class="page-title" style="
+    margin-top: 0px;
+"> {{q}}</h1>
+    <div class="taxonomy-description">
+        <p>Poems in this category {{q}}.</p>
+    </div>
+</header>
+
+{% endblock content2 %}

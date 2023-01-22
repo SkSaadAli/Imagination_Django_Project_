@@ -1,0 +1,166 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<!-- html for only main poem content page -->
+
+<body
+	class="post-template-default single single-post postid-1016 single-format-standard wp-custom-logo has-sidebar-right elementor-default elementor-kit-2114">
+
+	{% include 'navbar.html' %}
+
+	<div id="content" class="site-content">
+		<div class="top-section">
+		</div>
+		<div class="container main-content-area">
+			<div class="cat-title">
+				<ul class="post-categories">
+					<li><a href="{% url 'category' %}?q={{Poetry.category}}" rel="category tag">{{Poetry.category}}</a>
+					</li>
+				</ul>
+			</div>
+			<div class="row">
+				<div class="main-content-inner col-sm-12 col-md-8 no-sidebar">
+					<div id="primary" class="content-area">
+						<main id="main" class="site-main" role="main">
+							<article id="post-1016"
+								class="post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+								<div class="blog-item-wrap">
+									<div class="post-inner-content" style="
+									padding-bottom: 0px;">
+										<div style="
+									box-shadow: 0 5px 10px rgb(0 0 0 / 0.2);
+																		padding-top: 30px;
+																		padding-left: 30px;
+																		padding-right: 30px;
+																		padding-bottom: 30px;
+																		">
+											<header class="entry-header page-header">
+												<h1 class="entry-title">{{Poetry.name}}</h1>
+												<div class="entry-meta">
+													<span class="posted-on">Posted on <a
+															href="https://colorlibhub.com/activello/template-featured-image-vertical/"
+															rel="bookmark"><time class="entry-date published"
+																datetime="2015-11-11T15:36:32+00:00">{{Poetry.updated}}</time><time
+																class="updated"
+																datetime="2020-10-21T11:09:28+00:00">{{Poetry.updated}}</time></a></span>by
+													<span class="author vcard"><a class="url fn n"
+															href="{% url 'author' %}?q={{Poetry.Author}}">{{Poetry.Author}}</a></span>
+												</div>
+											</header>
+											<div class="entry-content">
+												<p>
+													<center>{{Poetry.content|linebreaksbr}}</center>
+												</p>
+
+											</div>
+										</div>
+
+										<br><br>
+										<div class="entry-content">
+
+											<div class="read-more">
+
+
+												{% if request.user == Poetry.Author%}
+												<a href="{% url 'delete-poem' Poetry.id %}" title="delete">delete</a>
+												<a href="{% url 'update-poem' Poetry.id %}" title="update">update</a>
+												{% endif %}
+											</div>
+										</div>
+
+										<br>
+										<br>
+
+
+										<!-- comments start here -->
+										<div id="comments" class="comments-area">
+
+											<h2 class="comments-title">
+												{{count}} Replies to &ldquo;Page with comments&rdquo;
+											</h2>
+											{% if count != '0' %}
+											<ol class="comment-list">
+
+												{% for comment in comments %}
+												<li class="comment even thread-even depth-1" id="comment-3">
+													<div id="div-comment-3" class="comment-body">
+														<div class="comment-author vcard asdasd">
+															<img alt=''
+																src='https://secure.gravatar.com/avatar/ef331c6e33890a8fa68e36cb7a7f0f87?s=80&#038;d=mm&#038;r=g'
+																srcset='https://secure.gravatar.com/avatar/ef331c6e33890a8fa68e36cb7a7f0f87?s=160&#038;d=mm&#038;r=g 2x'
+																class='avatar avatar-80 photo' height='80' width='80'
+																loading='lazy' decoding='async' /> <cite
+																class="fn">{{comment.user}}</cite> <span
+																class="says">says:</span>
+															{% if request.user == comment.user %}
+															<a rel='nofollow' class='comment-reply-link'
+																href="{% url 'delete-comment' comment.id %}"
+																data-commentid="3" data-postid="155"
+																data-belowelement="div-comment-3"
+																data-respondelement="respond"
+																data-replyto="Reply to tellyworthtest2"
+																aria-label='Reply to tellyworthtest2'>Delete</a>
+															{% endif %}
+															<div class="comment-meta commentmetadata"><a
+																	href="https://colorlibhub.com/activello/about/page-with-comments/#comment-3">
+																	{{comment.created|timesince}} ago</a>
+															</div>
+														</div>
+														<p>{{comment.body}}</p>
+													</div>
+												</li>
+												{% endfor %}
+
+											</ol>
+											{% endif %}
+											{% if request.user.is_authenticated %}
+											<div id="respond" class="comment-respond">
+												<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a
+															rel="nofollow" id="cancel-comment-reply-link"
+															href="/activello/about/page-with-comments/#respond"
+															style="display:none;">Cancel reply</a></small></h3>
+												<form action="" method="post" id="commentform" class="comment-form"
+													novalidate>
+													{% csrf_token %}
+													<textarea id="comment" name="body" cols="45" rows="8"
+														aria-required="true" placeholder="Comment"></textarea>
+													<p class="form-submit"><input name="submit" type="submit"
+															id="submit" class="submit" value="Post Reply" /> <input
+															type='hidden' name='comment_post_ID' value='155'
+															id='comment_post_ID' />
+														<input type='hidden' name='comment_parent' id='comment_parent'
+															value='0' />
+													</p>
+												</form>
+											</div>
+											{% else %}
+											<div>
+												<h2 class="comments-title" style="
+												margin-bottom: 0px;
+												padding-bottom: 0px;
+											">login to comment</h2>
+											</div>
+											{% endif %}
+										</div>
+
+
+
+										<!-- comments end here -->
+
+									</div>
+								</div>
+							</article>
+						</main>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+
+
+
+
+
+	{% endblock %}

@@ -1,0 +1,50 @@
+<!-- this html is for footer extension for every other page -->
+
+<!-- this is footer -->
+
+<div id="footer-area">
+    <footer id="colophon" class="site-footer" role="contentinfo">
+        <div class="site-info container">
+            <div class="row">
+                <nav id="social" class="social-icons">
+                    <ul id="menu-social-items" class="social-menu">
+                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1734"><a
+                                href="https://www.linkedin.com/in/shaikhsaadali"><i
+                                    class="fab fa-linkedin-in"><span>linkedin-in</span></i></a></li>
+                        
+                        
+                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1737"><a
+                                href="mailto:sk.saad3621@gmail.com"><i
+                                    class="fab fa-google"><span>Gmail</span></i></a></li>
+                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1738"><a
+                                href="https://www.instagram.com/saady.aly/"><i class="fab fa-instagram"><span>Instagram</span></i></a>
+                        </li>
+                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1739"><a
+                                href="https://github.com/SkSaadAli"><i
+                                    class="fab fa-github"><span>Github</span></i></a></li>
+                    </ul>
+                </nav>
+                
+            </div>
+        </div>
+        <button class="scroll-to-top"><i class="fa fa-angle-up"></i></button>
+    </footer>
+    
+    <!-- end of footer -->
+
+</div>
+</div>
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        if ($(window).width() >= 767) {
+            $('.navbar-nav > li.menu-item > a').click(function () {
+                if ($(this).attr('target') !== '_blank') {
+                    window.location = $(this).attr('href');
+                } else {
+                    var win = window.open($(this).attr('href'), '_blank');
+                    win.focus();
+                }
+            });
+        }
+    });
+</script>

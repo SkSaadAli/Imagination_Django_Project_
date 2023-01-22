@@ -1,0 +1,57 @@
+{% load static %}
+<html class="no-js" lang="en-US">
+
+<!-- this html extends to every other html in this website -->
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Read Some Poems</title>
+	<link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}">
+
+	</style>
+
+	<!-- loading css and js from static folders -->
+
+	<link rel='stylesheet' id='activello-bootstrap-css'
+		href="{% static 'css/min_css.css' %}"
+		type='text/css' media='all' />
+
+	<link crossorigin="anonymous" rel='stylesheet' id='activello-fonts-css'
+		href="{% static 'css/google_fonts.css' %}"
+		type='text/css' media='all' />
+
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+
+	<link rel='stylesheet' id='activello-style-css'
+		href="{% static 'css/activello.css' %}"
+		type='text/css' media='all' />
+	<script type='text/javascript'
+		src="{% static 'js/min.js' %}"
+		id='jquery-core-js'></script>
+
+	<script src="{% static 'js/bootstrap_min.js' %}"></script>
+
+	<style type="text/css">
+		#social li {
+			display: inline-block;
+		}
+
+		#social li,
+		#social ul {
+			border: 0 !important;
+			list-style: none;
+			padding-left: 0;
+			text-align: center;
+		}
+	</style>
+</head>
+
+{% block content %}
+
+{% endblock %}
+
+{% include 'footer.html' %}
+</body>
+
+</html>

@@ -1,0 +1,115 @@
+{% load static %}
+
+<!-- this html is for side bar  -->
+
+<div id="secondary" class="widget-area col-sm-12 col-md-4" role="complementary">
+    <div class="inner">
+        <aside id="text-2" class="widget widget_text">
+            <h3 class="widget-title">About Me</h3>
+            <div class="textwidget">
+                <p><img src="{% static 'assets/about.jpg' %}" alt="About Me"></p>
+                <p>My name is <a href="{% url 'about' %}" taget="_blank"><strong>Shaikh Saad Ali</strong></a> and I am a
+                    back-end developer currently final year student at Jamia Hamdardand this website was created by
+                    <strong><em>Me</strong></em>.
+                </p>
+            </div>
+        </aside>
+        <aside id="activello-social-2" class="widget activello-social">
+            <h3 class="widget-title">Follow Me</h3>
+
+            <div class="social-icons sticky-sidebar-social">
+                <nav id="social" class="social-icons">
+                    <ul id="menu-social-items" class="social-menu">
+
+                        <li id="menu-item-1739"
+                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1739">
+                            <a href="https://www.linkedin.com/in/shaikhsaadali"><i
+                                    class="fab fa-linkedin-in"><span>linkedin-in</span></i></a>
+                        </li>
+
+                        <li id="menu-item-1737"
+                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1737">
+                            <a href="mailto:sk.saad3621@gmail.com"><i class="fab fa-google"><span>Gmail</span></i></a>
+                        </li>
+
+
+                        <li id="menu-item-1738"
+                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1738">
+                            <a href="https://www.instagram.com/saady.aly/"><i
+                                    class="fab fa-instagram"><span>Instagram</span></i></a>
+                        </li>
+                        <li id="menu-item-1739"
+                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1739">
+                            <a href="https://github.com/SkSaadAli"><i class="fab fa-github"><span>Github</span></i></a>
+                        </li>
+
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <aside id="activello_recent_posts-2" class="widget activello-recent-posts">
+            <h3 class="widget-title">Recent Posts</h3>
+
+            <div class="recent-posts-wrapper">
+
+                {% for poem in recent_p %}
+                <div class="post" style="
+                    margin-left: 20px;">
+
+                    <div class="entry-title" style="float: left;
+                        display: block;
+                        font-size: 17;
+                        /* background-color: #DADADA; */
+                        background-position: center center;
+                        background-repeat: no-repeat;
+                        overflow: hidden;
+                        width: 200px;
+                        ">
+                        <a href="{% url 'poem' poem.id %}">{{poem.name}}</a>
+
+                    </div><br>
+                    <div class="entry-meta">
+                        <span class="date">{{poem.created}}</span>by <a class="url fn n"
+                            href="{% url 'author' %}?q={{poem.Author}}">{{poem.Author}}</a>
+                    </div>
+
+                    <div class="post-content">
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </aside>
+        <aside id="search-2" class="widget widget_search">
+            <form role="search" method="get" class="form-search" action="{% url 'search' %}">
+                <div class="input-group">
+                    <label class="screen-reader-text" for="s">Search for:</label>
+                    <input type="text" class="form-control search-query" placeholder="Search&hellip;" value="" name="q"
+                        title="Search for:" />
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-default" name="submit" id="searchsubmit"
+                            value="Search">Search</button>
+                    </span>
+                </div>
+            </form>
+        </aside>
+        <aside id="activello-cats-2" class="widget activello-cats">
+            <h3 class="widget-title">Categories</h3>
+            <div class="cats-widget">
+                <ul>
+
+                    <li class="cat-item cat-item-38"><a href="{% url 'home' %}">
+                            All</a> <span>{{count}}</span>
+                    </li>
+                    {% for category in categorys %}
+                    <li class="cat-item cat-item-38"><a href="{% url 'category' %}?q={{category}}">
+                            {{category}}</a> <span>{{category.poetry_set.all.count}}</span>
+                    </li>
+                    {% endfor %}
+
+                </ul>
+            </div>
+        </aside>
+
+    </div>
+</div>

@@ -1,0 +1,81 @@
+{% extends 'main.html' %}
+
+{% block content %}
+{% load static %}
+
+<!-- html for only about us page  -->
+<body
+	class="post-template-default single single-post postid-1016 single-format-standard wp-custom-logo has-sidebar-right elementor-default elementor-kit-2114">
+
+	{% include 'navbar.html' %}
+
+	<div id="content" class="site-content">
+		<div class="top-section">
+		</div>
+		<div class="container main-content-area">
+
+			<div class="row">
+				<div class="main-content-inner col-sm-12 col-md-8 no-sidebar">
+					<div id="primary" class="content-area">
+						<main id="main" class="site-main" role="main">
+							<article id="post-1016"
+								class="post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+								<div class="blog-item-wrap">
+									<div class="post-inner-content" style="
+									padding-bottom: 0px;">
+										<div style="
+									box-shadow: 0 5px 10px rgb(0 0 0 / 0.2);
+																		padding-top: 30px;
+																		padding-left: 30px;
+																		padding-right: 30px;
+																		padding-bottom: 30px;
+																		">
+											<header class="entry-header page-header">
+												<h1 class="entry-title">About Me:</h1>
+
+											</header>
+											
+												<!-- cover img -->
+												<img width="1170" height="550" src="{% static 'assets/about.jpg' %}"
+													class="single-featured wp-post-image" alt="" decoding="async"
+													srcset="{% static 'assets/about.jpg' %} 1170w , {% static 'assets/about.jpg' %} 710w "
+													sizes="(max-width: 1170px) 100vw, 1170px" /> 
+
+
+											<!-- this is the main content -->
+											<div class="entry-content">
+												<p>
+													<center>{{about}}</center>
+												</p>
+
+											</div>
+										</div>
+
+										<br><br>
+										<div class="entry-content">
+
+											<div class="read-more">
+
+
+
+											</div>
+										</div>
+
+										<br>
+										<br>
+									</div>
+								</div>
+							</article>
+						</main>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+
+
+
+
+
+	{% endblock %}

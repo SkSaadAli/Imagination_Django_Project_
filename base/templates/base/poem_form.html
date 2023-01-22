@@ -1,0 +1,80 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<!-- html for only Poem Creation/Updation -->
+
+<body
+    class="post-template-default single single-post postid-1016 single-format-standard wp-custom-logo has-sidebar-right elementor-default elementor-kit-2114">
+    {% include 'navbar.html' %}
+
+    <div id="content" class="site-content">
+        <div class="container main-content-area">
+
+
+            <div class="row">
+
+
+                <div class="main-content-inner col-sm-12 col-md-8 no-sidebar">
+
+                    <div id="primary" class="content-area">
+                        <main id="main" class="site-main" role="main">
+                            <article id="post-1016"
+                                class="post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+                                <div class="blog-item-wrap">
+                                    <div class="post-inner-content">
+                                        <header class="entry-header page-header">
+                                            {% if page == 'create' %}
+                                            <h1 class="entry-title">Creating New Poem</h1>
+                                            <div class="entry-meta"></div>
+                                            {% else %}
+                                            <h1 class="entry-title">Updating Poem: {{poem.name}}</h1>
+                                            <div class="entry-meta"></div>
+                                            {% endif %}
+                                        </header>
+                                        <div class="entry-content">
+                                            <form method="POST" action="">
+                                                {% csrf_token %}
+                                                <p>
+                                                <label for="id_category">Poem Category: </label>
+                                                <br>
+                                                <input  required type="text" name="category" list="category-list"/>
+                                                <datalist id="category-list">
+                                                    <select class="category" id="poem_category">
+                                                        {% for category in categorys %}
+
+                                                        <option value="{{category.name}}">{{category.name}}</option>
+
+                                                        {% endfor %}
+                                                    </select>
+                                                    </datalist>
+                                                </p>
+                                                <p>
+                                                    
+                                                        <label for="id_name">Poem Name: </label><br>
+                                                        {{form.name}}
+                                                </p>
+                                                <p>
+                                                    
+                                                        <label for="id_content">Poem Content: </label>
+                                                        {{form.content}}
+                                                    </p>
+
+                                                <input type="Submit" value="Submit" />
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </main>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    {% endblock %}
