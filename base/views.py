@@ -319,6 +319,7 @@ def deleteMessage(request, slug):
 
 def about_us(request):
 
+    #keep in mind to change this directory for your file path
     about = open('C:/Users/alisa/Desktop/ReadSomePoems/base/about.txt').read()
     context = {'about': about}
     return render(request, 'base/about.html', context)
